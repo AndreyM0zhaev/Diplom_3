@@ -34,7 +34,7 @@ class MainPage(BasePage):
         self.click(MainPageLocator.BUTTON_ORDERS_LIST)
         return self.get_text(MainPageLocator.TEXT_ORDERS_LIST)
 
-    @allure.step('Переходим по клику на ингредиент и возвращаем детали ингредиента')
+    @allure.step('Переход по клику на ингредиент и возврат деталей ингредиента')
     def click_to_ingredient(self):
         """
         Переход к деталям ингредиента по клику на него.
@@ -44,7 +44,7 @@ class MainPage(BasePage):
         self.click(MainPageLocator.INGREDIENT)
         return self.get_text(MainPageLocator.INGREDIENT_DETAILS)
 
-    @allure.step('Закрываем детали ингредиента и возвращаем текст со страницы создания заказов')
+    @allure.step('Закрытие деталей ингредиента и возврат текста со страницы создания заказов')
     def click_exit_icon(self):
         """
         Закрытие деталей ингредиента и возврат текста со страницы создания заказов.
@@ -55,7 +55,7 @@ class MainPage(BasePage):
         self.click(MainPageLocator.EXIT_ICON)
         return self.get_text(MainPageLocator.TEXT_BURGER)
 
-    @allure.step('Переносим ингредиент в поле создания бургера')
+    @allure.step('Перенос ингредиента в поле создания бургера')
     def moving_ingredient(self):
         """
         Перемещение ингредиента в поле создания бургера.
@@ -63,7 +63,7 @@ class MainPage(BasePage):
         self.element_invisibility(LoginPageLocator.SEARCH_ELEMENT)
         self.moving_element(MainPageLocator.INGREDIENT, MainPageLocator.CREATE_BURGER)
 
-    @allure.step('Проверяем, что после добавления ингредиента, изменился его счётчик')
+    @allure.step('Изменение счётчика после добавления ингредиента')
     def counter_ingredient_increase(self):
         """
         Проверка увеличения счетчика ингредиента после его добавления.
@@ -74,7 +74,7 @@ class MainPage(BasePage):
         self.moving_element(MainPageLocator.INGREDIENT, MainPageLocator.CREATE_BURGER)
         return self.get_text(MainPageLocator.COUNTER)
 
-    @allure.step('Оформляем заказ и возвращаем текст, что заказ начали готовить')
+    @allure.step('Оформление заказа и возврат текста, что заказ начали готовить')
     def create_order_auth_user(self):
         """
         Оформление заказа и проверка текста о начале приготовления заказа.
@@ -85,4 +85,26 @@ class MainPage(BasePage):
         self.click(MainPageLocator.BUTTON_CREATE_ORDER)
         return self.get_text(MainPageLocator.TEXT_SUCCESSFUL)
 
+    @allure.step('Нажатие кнопки "Оформить заказ"')
+    def click_create_order_button(self):
+        """
+        Нажатие кнопки "Оформить заказ".
+        """
+        self.click(MainPageLocator.BUTTON_CREATE_ORDER)
+        self.element_invisibility(LoginPageLocator.SEARCH_ELEMENT)
 
+    @allure.step('Закрытие деталей оформленного заказа')
+    def click_close_order_button(self):
+        """
+        Закрытие деталей оформленного заказа.
+        """
+        self.element_invisibility(LoginPageLocator.SEARCH_ELEMENT)
+        self.click(MainPageLocator.BUTTON_CLOSE_ORDER)
+
+    @allure.step('Получение номера оформленного заказа')
+    def get_number_order(self):
+        """
+        Получение номера оформленного заказа.
+        :return: Номер заказа.
+        """
+        return self.get_text(MainPageLocator.NUMBER_ORDER)

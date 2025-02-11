@@ -1,22 +1,3 @@
-# NAME = 'Andrey'
-# EMAIL = 'Mozhaev.Andrey.v@yandex.ru'
-# PASSWORD = 'asdfgh123456!'
-#
-# BASE_URL = 'https://stellarburgers.nomoreparties.site/'
-# LOGIN_URL = 'https://stellarburgers.nomoreparties.site/login'
-# PROFILE_URL = 'https://stellarburgers.nomoreparties.site/account/profile'
-# REGISTER_URL = 'https://stellarburgers.nomoreparties.site/register'
-# PASSWORD_RECOVERY_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'
-# ORDERS_LIST_URL = 'https://stellarburgers.nomoreparties.site/feed'
-#
-#
-# BURGER = 'Соберите бургер'
-# ORDER = 'Лента заказов'
-# DETAILS = 'Детали ингредиента'
-# X2 = '2'
-# IN_PROGRESS = 'Ваш заказ начали готовить'
-
-
 # Данные пользователя для авторизации и регистрации
 NAME = 'Andrey'  # Имя пользователя
 EMAIL = 'Mozhaev.Andrey.v@yandex.ru'  # Email пользователя
