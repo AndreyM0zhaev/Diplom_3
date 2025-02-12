@@ -26,7 +26,7 @@ class TestMainPage:
             transition_button_orders_list = MainPage(browser, BASE_URL)
 
         with allure.step("Проверка текста на странице ленты заказов"):
-            assert transition_button_orders_list.check_orders_list_button() == ORDER
+            assert transition_button_orders_list.check_orders_list_button() == FEED
 
     @allure.story("Детали ингредиента")
     @allure.title('Проверка появления всплывающего окна с деталями')
