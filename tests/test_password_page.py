@@ -30,9 +30,9 @@ class TestPasswordRecovery:
     @allure.description('Тест проверяет, что клик по кнопке показать/скрыть пароль делает поле '
                         'активным — подсвечивает его')
     def test_click_switch(self, browser):
-        button_show_hide = PasswordPage(browser, PASSWORD_RECOVERY_URL)
-        button_show_hide.enter_email()
-        button_show_hide.click_recovery_button()
-        button_show_hide.click_switch()
-        assert button_show_hide.check_element_visibility() is not None
+        switch = PasswordPage(browser, PASSWORD_RECOVERY_URL)
+        switch.enter_email()
+        switch.click_recovery_button()
+        switch.click_switch()
+        assert switch.check_element_visibility() is not None
 
