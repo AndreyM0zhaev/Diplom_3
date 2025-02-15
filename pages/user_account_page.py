@@ -3,6 +3,7 @@ import allure
 from locators.user_account_locators import UserAccountLocators as UAL
 from locators.login_page_locators import LoginPageLocator as LPL
 from pages.base_page import *
+from locators.main_page_locators import MainPageLocator as MPL
 
 
 @allure.epic("Тесты для личного кабинета пользователя")
@@ -30,3 +31,4 @@ class UserAccountPage(BasePage):
         self.click(UAL.BUTTON_EXIT)
         self.element_invisibility(LPL.SEARCH_ELEMENT)
         return self.get_text(LPL.BUTTON_LOGIN)
+

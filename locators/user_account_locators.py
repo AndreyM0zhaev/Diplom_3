@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 class UserAccountLocators:
     # Локатор кнопки "Личный Кабинет"
-    BUTTON_USER_ACCOUNT = [By.XPATH, ".//p[text()='Личный Кабинет']"]
+    BUTTON_USER_ACCOUNT = [By.XPATH, "//p[text()='Личный Кабинет']/parent::a"]
 
     # Локатор текста "Профиль"
     TEXT_PROFILE = [By.XPATH, ".//a[text()='Профиль']"]

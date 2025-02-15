@@ -22,6 +22,7 @@ class MainPageLocator:
     BUTTON_CREATE_ORDER = [By.XPATH, ".//button[text()='Оформить заказ']"]  # Кнопка "Оформить заказ"
     TEXT_SUCCESSFUL = [By.XPATH, ".//p[text()='Ваш заказ начали готовить']"]  # Текст успешного оформления заказа
     BUTTON_CLOSE_ORDER = [By.XPATH, ".//button[contains(@class, 'Modal_modal__close_modified')]"]  # Кнопка закрытия заказа
+    ORDER_MODAL_OPENED_LINK = (By.XPATH, './/section[contains(@class,"Modal_modal_opened__3ISw4")]')  #
 
     # Локаторы для номера заказа
     NUMBER_ORDER = [By.XPATH, ".//h2[contains(@class, 'Modal_modal__title_shadow')]"]  # Номер заказа

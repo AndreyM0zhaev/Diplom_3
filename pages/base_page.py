@@ -17,6 +17,11 @@ class BasePage:
         self.driver.get(url)
         self.time = time
 
+    @allure.step('Открываем страницу по URL')
+    def open_page(self, url):
+        """ Открываем страницу по URL {page_url} """
+        return self.driver.get(url)
+
     @allure.step('Поиск элемента по локатору: {locator}')
     def find_element(self, locator, time=10):
         """
@@ -29,6 +34,17 @@ class BasePage:
             EC.visibility_of_element_located(locator),
             message=f'Не удалось найти элемент {locator}'
         )
+
+    def wait_for_load_element(self, locator):
+        """ Ждем загрузку элемента HTML по локатору {locator} """
+        return WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located(locator))
+
+    @allure.step('Ждем загрузку всех элементов HTML по локатору')
+    def wait_for_load_all_elements(self, locator):
+        """ Ждем загрузку всех элементов HTML по локатору {locator} """
+        return WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_all_elements_located(locator))
 
     @allure.step('Клик по элементу с локатором: {locator}')
     def click(self, locator, time=10):
@@ -85,3 +101,27 @@ class BasePage:
         source = self.driver.find_element(*source_locator)
         destination = self.driver.find_element(*new_locator)
         ActionChains(self.driver).click_and_hold(source).move_to_element(destination).release().perform()
+
+    @allure.step('Ждем пока текст элемента HTML по локатору будет отличаться от значения')
+    def wait_for_changed_text(self, locator, text_value):           # Bool
+        """ Ждем загрузку элемента HTML по локатору {locator} """
+        return WebDriverWait(self.driver, 20).until(
+            EC.none_of(EC.text_to_be_present_in_element(locator, text_value)))
+
+    @allure.step('Подождать прогрузки элемента')
+    def wait_visibility_of_element(self, locator):
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
+
+    @allure.step('Проверить кликабельность элемента')
+    def check_element_is_clickable(self, locator):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(locator))
+
+    @allure.step('Кликнуть на элемент')
+    def click_on_element(self, locator):
+        target = self.check_element_is_clickable(locator)
+        click = ActionChains(self.driver)
+        click.move_to_element(target).click().perform()
+
+
+
+
