@@ -4,6 +4,7 @@ faker = Faker()
 
 class User:
 
+# Метод генерации данных для регистрации произвольного пользователя
     @staticmethod
     def registration_new_user():
         user_name = faker.name()

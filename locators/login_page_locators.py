@@ -8,4 +8,5 @@ class LoginPageLocator:
     BUTTON_LOGIN = [By.XPATH, ".//button[text()='Войти']"]  # Кнопка "Войти"
 
     # Локатор для поиска элемента, указывающего на загрузку или модальное окно
-    SEARCH_ELEMENT = [By.XPATH, ".//*[contains(@class, 'Modal_modal__loading')]/following::div[@class='Modal_modal_overlay__x2ZCr']"]  # Элемент, указывающий на загрузку
+    SEARCH_ELEMENT = [By.XPATH, "//*[contains(@class, 'Modal_modal__loading')]"
+                                "/following::div[@class='Modal_modal_overlay__x2ZCr']"]  # Элемент, указывающий на загрузку

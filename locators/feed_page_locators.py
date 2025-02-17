@@ -1,4 +1,3 @@
-import allure
 from selenium.webdriver.common.by import By
 
 
@@ -12,8 +11,13 @@ class FeedPageLocators:
     COMPLETED_TODAY = [By.XPATH, ".//p[text()='Выполнено за сегодня:']//following::p[contains(@class, 'OrderFeed_number')]"]  # Количество выполненных заказов за сегодня
     IN_PROGRESS = [By.XPATH, ".//ul[contains(@class, 'OrderFeed_orderListReady')]//li[1]"]  # Заказ в процессе выполнения
     FEED_NAME = [By.XPATH, ".//h2[text()='Флюоресцентный бургер']"]  # Название заказа
-    ORDER_LINK = (By.XPATH, './/*[contains(@href,"/feed/")]')
-    order_card_id = (By.XPATH, '(//div[contains(@class, "OrderHistory_textBox")]'
-                               '/p[contains(@class, "text_type_digits-default")])[1]')
+    ORDER_CARD_ID = (By.XPATH, '(//div[contains(@class, "OrderHistory_textBox")]/p[contains(@class, "text_type_digits-default")][1]')
+
     # Карточка заказа в ленте
-    order_in_feed = (By.XPATH, '//li[contains(@class, "OrderHistory_listItem")][1]')
+    ORDER_IN_FEED = (By.XPATH, '//li[contains(@class, "OrderHistory_listItem")][1]')
+    # Номер заказа в ленте — заготовка, в которую нужно подставить id искомого заказа
+    ORDER_CARD_ID_IN_FEED = (By.XPATH, './/*[text()="{order_id}"]')
+
+
+
+

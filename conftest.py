@@ -8,8 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 from data import *
-# from locators.main_page_locators import MainPageLocator as MPL
-# from helpers.helpers_register_users import HelpersRegisterUser as u
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 
@@ -46,6 +44,7 @@ def browser(request):
     with allure.step("Завершение работы браузера"):
         browser.quit()
 
+# Фикстура для логина конкретного пользователя
 @pytest.fixture()
 def login(browser):
     """
@@ -64,6 +63,7 @@ def login(browser):
     with allure.step("Нажатие кнопки 'Войти'"):
         login_user.click_login_button()
 
+# Фикстура для создания пользователя через API
 @pytest.fixture
 def create_user():
     payload = User.registration_new_user()
@@ -72,7 +72,7 @@ def create_user():
     token = response.json()["accessToken"]
     requests.delete(BASE_URL + DELETE_USER, headers={"Authorization": token})
 
-# Фикстура для логина пользователя
+# Фикстура для логина произвольного пользователя
 @pytest.fixture
 def login_random_user(browser, create_user):
     """

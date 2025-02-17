@@ -1,4 +1,3 @@
-import pytest
 import allure
 from conftest import *
 from data import *

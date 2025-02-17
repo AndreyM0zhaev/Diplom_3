@@ -1,7 +1,6 @@
 import pytest
 import allure
 
-from data import *
 from conftest import *
 from pages.password_page import PasswordPage
 

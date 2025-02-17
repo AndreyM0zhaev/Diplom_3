@@ -2,7 +2,7 @@ import allure
 from locators.main_page_locators import *
 from locators.login_page_locators import *
 from pages.base_page import BasePage
-from locators.feed_page_locators import FeedPageLocators as FPL
+
 from locators.main_page_locators import MainPageLocator as MPL
 from locators.user_account_locators import UserAccountLocators as UAL
 
@@ -26,7 +26,6 @@ class MainPage(BasePage):
         Переход на страницу "Лента Заказов" по кнопке.
         """
         self.click(MainPageLocator.BUTTON_ORDERS_LIST)
-        self.wait_for_load_element(FPL.COMPLETED_ALL_TIME)
 
     @allure.step('Получение списка заказов после перехода по кнопке "Лента Заказов"')
     def check_orders_list_button(self):
@@ -111,13 +110,14 @@ class MainPage(BasePage):
         Получение номера оформленного заказа.
         :return: Номер заказа.
         """
+        self.wait_for_changed_text(MPL.NUMBER_ORDER, '9999')
         return self.get_text(MainPageLocator.NUMBER_ORDER)
 
 
     @allure.step('Нажатие кнопки "Личный кабинет"')
     def click_user_account_button(self):
         """
-        Кликает по кнопке 'Личный кабинет' на хедере страницы.
+        Клик по кнопке 'Личный кабинет' на хедере страницы.
         """
         self.wait_visibility_of_element(UAL.BUTTON_USER_ACCOUNT)
         self.click_on_element(UAL.BUTTON_USER_ACCOUNT)
@@ -129,19 +129,5 @@ class MainPage(BasePage):
         """
         self.wait_for_load_element(MPL.BUTTON_CREATE_ORDER)
 
-    @allure.step('Ждем, что появилось всплывающее окно с деталями заказа')
-    def order_details_is_visible(self):
-        return self.wait_for_load_element(MPL.ORDER_MODAL_OPENED_LINK)
 
-    # вспомогательная функция для других тестов
-    # @allure.step('Создаем заказ и получаем его номер')
-    # def create_order(self):
-    #     self.create_order_auth_user()
-    #     # ждем чтобы появилось всплывающее окно с деталями заказа
-    #     self.order_details_is_visible()
-    #     self.wait_for_changed_text(MPL.NUMBER_ORDER, '9999')
-    #     # получаем номер заказа
-    #     number = self.get_number_order()
-    #     # кликаем крестик - кнопку закрытия деталей заказа
-    #     self.click(MPL.BUTTON_CREATE_ORDER)
-    #     return str(number)
+
