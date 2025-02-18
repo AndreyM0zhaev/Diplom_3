@@ -68,7 +68,7 @@ class TestFeedPage:
 
     @allure.title('Проверка появления номера созданного заказа в разделе "В работе"')
     @allure.description('Тест проверяет, что после оформления заказа его номер появляется в разделе В работе')
-    def test_order_number_appeared_in_work(self, browser, create_user, login_random_user, create_order):
+    def test_order_number_appeared_in_work(self, browser, create_user, login_random_user):
 
         create_order = MainPage(browser, BASE_URL)
         create_order.moving_ingredient()
